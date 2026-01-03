@@ -1,20 +1,29 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import ThreeBackground from "@/components/three-background"
-import { Github, Linkedin, Mail, Globe, Server, Cloud, Network } from "lucide-react"
+import ThreeBackground from "@/components/three-background";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import {
+  Cloud,
+  Github,
+  Globe,
+  Linkedin,
+  Mail,
+  Network,
+  Server,
+} from "lucide-react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function PortfolioPage() {
-  const [language, setLanguage] = useState<"en" | "fr" | "es">("en")
-  const [activeSection, setActiveSection] = useState("about")
+  const [language, setLanguage] = useState<"en" | "fr" | "es">("en");
+  const [activeSection, setActiveSection] = useState("about");
 
   const translations = {
     en: {
-      name: "Your Name",
-      tagline: "IT, Cloud & Interoperability Specialist",
-      subtitle: "Building scalable cloud solutions and seamless integrations",
+      name: "Mohammed Dahiry",
+      tagline: "Cloud, DevOps & Data Engineer",
+      subtitle: "Building scalable cloud solutions and Data pipelines",
       nav: {
         about: "About",
         experience: "Experience",
@@ -27,9 +36,21 @@ export default function PortfolioPage() {
           "I'm a passionate IT professional specializing in cloud architecture, system interoperability, and enterprise integration. With expertise in AWS, Azure, and GCP, I design scalable solutions that connect disparate systems and enable seamless data flow across platforms. My work bridges the gap between legacy systems and modern cloud infrastructure, ensuring organizations can innovate while maintaining operational continuity.",
         expertise: "Expertise Areas",
         skills: [
-          { icon: Cloud, title: "Cloud Architecture", desc: "AWS, Azure, GCP, Kubernetes" },
-          { icon: Network, title: "Interoperability", desc: "API Design, Microservices, Integration Patterns" },
-          { icon: Server, title: "Infrastructure", desc: "DevOps, CI/CD, Infrastructure as Code" },
+          {
+            icon: Cloud,
+            title: "Cloud Architecture",
+            desc: "AWS, Azure, GCP, Kubernetes",
+          },
+          {
+            icon: Network,
+            title: "Interoperability",
+            desc: "API Design, Microservices, Integration Patterns",
+          },
+          {
+            icon: Server,
+            title: "Infrastructure",
+            desc: "DevOps, CI/CD, Infrastructure as Code",
+          },
         ],
       },
       experience: {
@@ -89,9 +110,10 @@ export default function PortfolioPage() {
       },
     },
     fr: {
-      name: "Votre Nom",
+      name: "Mohammed Dahiry",
       tagline: "Spécialiste IT, Cloud & Interopérabilité",
-      subtitle: "Créer des solutions cloud évolutives et des intégrations transparentes",
+      subtitle:
+        "Créer des solutions cloud évolutives et des intégrations transparentes",
       nav: {
         about: "À propos",
         experience: "Expérience",
@@ -104,9 +126,21 @@ export default function PortfolioPage() {
           "Je suis un professionnel IT passionné, spécialisé dans l'architecture cloud, l'interopérabilité des systèmes et l'intégration d'entreprise. Avec une expertise en AWS, Azure et GCP, je conçois des solutions évolutives qui connectent des systèmes disparates et permettent un flux de données transparent entre les plateformes. Mon travail fait le lien entre les systèmes hérités et l'infrastructure cloud moderne, garantissant que les organisations peuvent innover tout en maintenant la continuité opérationnelle.",
         expertise: "Domaines d'Expertise",
         skills: [
-          { icon: Cloud, title: "Architecture Cloud", desc: "AWS, Azure, GCP, Kubernetes" },
-          { icon: Network, title: "Interopérabilité", desc: "Conception API, Microservices, Patterns d'Intégration" },
-          { icon: Server, title: "Infrastructure", desc: "DevOps, CI/CD, Infrastructure as Code" },
+          {
+            icon: Cloud,
+            title: "Architecture Cloud",
+            desc: "AWS, Azure, GCP, Kubernetes",
+          },
+          {
+            icon: Network,
+            title: "Interopérabilité",
+            desc: "Conception API, Microservices, Patterns d'Intégration",
+          },
+          {
+            icon: Server,
+            title: "Infrastructure",
+            desc: "DevOps, CI/CD, Infrastructure as Code",
+          },
         ],
       },
       experience: {
@@ -166,9 +200,10 @@ export default function PortfolioPage() {
       },
     },
     es: {
-      name: "Tu Nombre",
+      name: "Mohammed Dahiry",
       tagline: "Especialista en IT, Cloud e Interoperabilidad",
-      subtitle: "Construyendo soluciones cloud escalables e integraciones fluidas",
+      subtitle:
+        "Construyendo soluciones cloud escalables e integraciones fluidas",
       nav: {
         about: "Acerca",
         experience: "Experiencia",
@@ -181,13 +216,21 @@ export default function PortfolioPage() {
           "Soy un profesional de IT apasionado, especializado en arquitectura cloud, interoperabilidad de sistemas e integración empresarial. Con experiencia en AWS, Azure y GCP, diseño soluciones escalables que conectan sistemas dispares y permiten un flujo de datos fluido entre plataformas. Mi trabajo cierra la brecha entre sistemas heredados e infraestructura cloud moderna, asegurando que las organizaciones puedan innovar mientras mantienen la continuidad operativa.",
         expertise: "Áreas de Especialización",
         skills: [
-          { icon: Cloud, title: "Arquitectura Cloud", desc: "AWS, Azure, GCP, Kubernetes" },
+          {
+            icon: Cloud,
+            title: "Arquitectura Cloud",
+            desc: "AWS, Azure, GCP, Kubernetes",
+          },
           {
             icon: Network,
             title: "Interoperabilidad",
             desc: "Diseño de APIs, Microservicios, Patrones de Integración",
           },
-          { icon: Server, title: "Infraestructura", desc: "DevOps, CI/CD, Infrastructure as Code" },
+          {
+            icon: Server,
+            title: "Infraestructura",
+            desc: "DevOps, CI/CD, Infrastructure as Code",
+          },
         ],
       },
       experience: {
@@ -246,37 +289,40 @@ export default function PortfolioPage() {
         cta: "Contáctame",
       },
     },
-  }
+  };
 
-  const t = translations[language]
+  const t = translations[language];
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["about", "experience", "projects", "contact"]
-      const scrollPosition = window.scrollY + window.innerHeight / 2
+      const sections = ["about", "experience", "projects", "contact"];
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
 
       for (const section of sections) {
-        const element = document.getElementById(section)
+        const element = document.getElementById(section);
         if (element) {
-          const { offsetTop, offsetHeight } = element
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
-            break
+          const { offsetTop, offsetHeight } = element;
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + offsetHeight
+          ) {
+            setActiveSection(section);
+            break;
           }
         }
       }
-    }
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId)
+    const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+      element.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   return (
     <div className="relative min-h-screen">
@@ -288,9 +334,16 @@ export default function PortfolioPage() {
           <div className="flex items-center gap-8">
             <button
               onClick={() => scrollToSection("about")}
-              className="text-lg font-semibold hover:text-primary transition-colors"
+              className="flex items-center hover:opacity-80 transition-opacity"
             >
-              {t.name}
+              <Image
+                src="/logo.png"
+                alt={t.name}
+                width={120}
+                height={40}
+                className="h-8 w-auto"
+                priority
+              />
             </button>
             <div className="hidden md:flex items-center gap-6">
               {Object.entries(t.nav).map(([key, label]) => (
@@ -298,7 +351,9 @@ export default function PortfolioPage() {
                   key={key}
                   onClick={() => scrollToSection(key)}
                   className={`text-sm transition-colors ${
-                    activeSection === key ? "text-primary font-medium" : "text-muted-foreground hover:text-foreground"
+                    activeSection === key
+                      ? "text-primary font-medium"
+                      : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
                   {label}
@@ -308,13 +363,25 @@ export default function PortfolioPage() {
           </div>
 
           <div className="flex items-center gap-2">
-            <Button variant={language === "en" ? "default" : "ghost"} size="sm" onClick={() => setLanguage("en")}>
+            <Button
+              variant={language === "en" ? "default" : "ghost"}
+              size="sm"
+              onClick={() => setLanguage("en")}
+            >
               EN
             </Button>
-            <Button variant={language === "fr" ? "default" : "ghost"} size="sm" onClick={() => setLanguage("fr")}>
+            <Button
+              variant={language === "fr" ? "default" : "ghost"}
+              size="sm"
+              onClick={() => setLanguage("fr")}
+            >
               FR
             </Button>
-            <Button variant={language === "es" ? "default" : "ghost"} size="sm" onClick={() => setLanguage("es")}>
+            <Button
+              variant={language === "es" ? "default" : "ghost"}
+              size="sm"
+              onClick={() => setLanguage("es")}
+            >
               ES
             </Button>
           </div>
@@ -324,15 +391,25 @@ export default function PortfolioPage() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4 pt-20">
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          <h1 className="text-5xl md:text-7xl font-bold text-balance">{t.name}</h1>
-          <p className="text-xl md:text-2xl text-muted-foreground">{t.tagline}</p>
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">{t.subtitle}</p>
+          <h1 className="text-5xl md:text-7xl font-bold text-balance">
+            {t.name}
+          </h1>
+          <p className="text-xl md:text-2xl text-muted-foreground">
+            {t.tagline}
+          </p>
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
+            {t.subtitle}
+          </p>
           <div className="flex items-center justify-center gap-4 pt-8">
             <Button size="lg" onClick={() => scrollToSection("contact")}>
               {t.contact.cta}
             </Button>
             <Button variant="outline" size="lg" asChild>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Github className="mr-2 h-5 w-5" />
                 GitHub
               </a>
@@ -347,7 +424,10 @@ export default function PortfolioPage() {
             >
               <Linkedin className="h-6 w-6" />
             </a>
-            <a href="mailto:contact@example.com" className="text-muted-foreground hover:text-primary transition-colors">
+            <a
+              href="mailto:contact@example.com"
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
               <Mail className="h-6 w-6" />
             </a>
             <a
@@ -365,22 +445,29 @@ export default function PortfolioPage() {
       {/* About Section */}
       <section id="about" className="relative py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">{t.about.title}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
+            {t.about.title}
+          </h2>
           <p className="text-lg text-muted-foreground max-w-4xl mx-auto mb-16 leading-relaxed text-center">
             {t.about.description}
           </p>
 
-          <h3 className="text-2xl font-semibold mb-8 text-center">{t.about.expertise}</h3>
+          <h3 className="text-2xl font-semibold mb-8 text-center">
+            {t.about.expertise}
+          </h3>
           <div className="grid md:grid-cols-3 gap-6">
             {t.about.skills.map((skill, index) => {
-              const Icon = skill.icon
+              const Icon = skill.icon;
               return (
-                <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
+                <Card
+                  key={index}
+                  className="p-6 hover:shadow-lg transition-shadow"
+                >
                   <Icon className="h-12 w-12 mb-4 text-primary" />
                   <h4 className="text-xl font-semibold mb-2">{skill.title}</h4>
                   <p className="text-muted-foreground">{skill.desc}</p>
                 </Card>
-              )
+              );
             })}
           </div>
         </div>
@@ -389,18 +476,27 @@ export default function PortfolioPage() {
       {/* Experience Section */}
       <section id="experience" className="relative py-20 px-4 bg-muted/30">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">{t.experience.title}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+            {t.experience.title}
+          </h2>
           <div className="space-y-8">
             {t.experience.timeline.map((item, index) => (
-              <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
+              <Card
+                key={index}
+                className="p-6 hover:shadow-lg transition-shadow"
+              >
                 <div className="flex flex-col md:flex-row md:items-start gap-4">
                   <div className="md:w-48 flex-shrink-0">
-                    <p className="text-sm text-muted-foreground font-medium">{item.year}</p>
+                    <p className="text-sm text-muted-foreground font-medium">
+                      {item.year}
+                    </p>
                   </div>
                   <div className="flex-grow">
                     <h3 className="text-xl font-semibold mb-1">{item.role}</h3>
                     <p className="text-primary mb-3">{item.company}</p>
-                    <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {item.description}
+                    </p>
                   </div>
                 </div>
               </Card>
@@ -412,12 +508,19 @@ export default function PortfolioPage() {
       {/* Projects Section */}
       <section id="projects" className="relative py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">{t.projects.title}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
+            {t.projects.title}
+          </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.projects.items.map((project, index) => (
-              <Card key={index} className="p-6 hover:shadow-lg transition-shadow flex flex-col">
+              <Card
+                key={index}
+                className="p-6 hover:shadow-lg transition-shadow flex flex-col"
+              >
                 <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
-                <p className="text-muted-foreground leading-relaxed mb-4 flex-grow">{project.description}</p>
+                <p className="text-muted-foreground leading-relaxed mb-4 flex-grow">
+                  {project.description}
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, tagIndex) => (
                     <span
@@ -437,8 +540,12 @@ export default function PortfolioPage() {
       {/* Contact Section */}
       <section id="contact" className="relative py-20 px-4 bg-muted/30">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.contact.title}</h2>
-          <p className="text-lg text-muted-foreground mb-8 leading-relaxed">{t.contact.description}</p>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            {t.contact.title}
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            {t.contact.description}
+          </p>
           <Button size="lg" asChild>
             <a href="mailto:contact@example.com">
               <Mail className="mr-2 h-5 w-5" />
@@ -455,5 +562,5 @@ export default function PortfolioPage() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
