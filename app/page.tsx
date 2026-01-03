@@ -339,8 +339,8 @@ export default function PortfolioPage() {
               <Image
                 src="/logo.png"
                 alt={t.name}
-                width={120}
-                height={40}
+                width={150}
+                height={80}
                 className="h-8 w-auto"
                 priority
               />
