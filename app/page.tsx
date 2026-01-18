@@ -19,6 +19,7 @@ import {
   Linkedin,
   Mail,
   MapPin,
+  Menu,
   Network,
   Phone,
   Send,
@@ -37,9 +38,10 @@ export default function PortfolioPage() {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const languages = [
-    { code: "en" as const, name: "English", flag: "En" },
+    { code: "en" as const, name: "English", flag: "🇬🇧" },
     { code: "fr" as const, name: "Français", flag: "🇫🇷" },
     { code: "es" as const, name: "Español", flag: "🇪🇸" },
   ];
@@ -842,6 +844,34 @@ export default function PortfolioPage() {
           </div>
 
           <div className="flex items-center gap-2">
+            {/* Mobile Menu Dropdown */}
+            <DropdownMenu open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="sm" className="h-9 w-9 p-0 md:hidden">
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48">
+                {Object.entries(t.nav).map(([key, label]) => (
+                  <DropdownMenuItem
+                    key={key}
+                    onClick={() => {
+                      scrollToSection(key);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className={`${
+                      activeSection === key
+                        ? "text-primary font-medium"
+                        : ""
+                    }`}
+                  >
+                    {label}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {/* Language Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="h-9 w-9 p-0">
@@ -929,7 +959,7 @@ export default function PortfolioPage() {
           </div>
           <div className="flex items-center justify-center gap-4 pt-4">
             <a
-              href="www.linkedin.com/in/mohamed-dahiry"
+              href="https://www.linkedin.com/in/mohamed-dahiry"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -943,7 +973,7 @@ export default function PortfolioPage() {
               <Mail className="h-6 w-6" />
             </a>
             <a
-              href="https://example.com"
+              href="https://mohammed-dahiry-portfolio.vercel.app/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
